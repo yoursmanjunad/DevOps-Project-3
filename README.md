@@ -1,53 +1,44 @@
-# BoardgameListingWebApp
+### Project Documentation
 
-## Description
+#### **Project Overview:**
+I recently completed a comprehensive DevOps project that focused on deploying an application through a robust CI/CD pipeline. The primary goal was to automate the entire build, test, and deployment processes while ensuring top-tier code quality and security throughout the pipeline.
 
-**Board Game Database Full-Stack Web Application.**
-This web application displays lists of board games and their reviews. While anyone can view the board game lists and reviews, they are required to log in to add/ edit the board games and their reviews. The 'users' have the authority to add board games to the list and add reviews, and the 'managers' have the authority to edit/ delete the reviews on top of the authorities of users.  
+#### **Tools and Technologies Used:**
+- **Git & GitHub:** Employed for version control and to facilitate collaborative development efforts.
+- **Jenkins:** Automated the CI/CD pipeline, handling the entire lifecycle from code integration to deployment.
+- **Maven:** Managed project dependencies and orchestrated the build process efficiently.
+- **SonarQube:** Integrated for continuous code quality analysis, enforcing defined quality gates to maintain high standards.
+- **Trivy:** Utilized for filesystem and Docker image security scanning, identifying vulnerabilities early in the development pipeline.
+- **Docker:** Containerized the application, ensuring consistent deployment across different environments.
+- **Kubernetes:** Managed the deployment of Docker containers, enabling scalable and reliable application operation.
+- **Grafana & Prometheus:** Set up for monitoring application performance and system metrics, ensuring the health and stability of the system post-deployment.
+- **AWS:** Leveraged for cloud infrastructure to host and manage the application securely and reliably.
 
-## Technologies
+#### **Pipeline Workflow:**
+The CI/CD pipeline is triggered automatically whenever a commit is pushed to the main branch of the GitHub repository. The Jenkins pipeline includes the following stages:
 
-- Java
-- Spring Boot
-- Amazon Web Services(AWS) EC2
-- Thymeleaf
-- Thymeleaf Fragments
-- HTML5
-- CSS
-- JavaScript
-- Spring MVC
-- JDBC
-- H2 Database Engine (In-memory)
-- JUnit test framework
-- Spring Security
-- Twitter Bootstrap
-- Maven
+1. **Git Checkout:** The latest code is pulled from the repository to ensure the pipeline is working with the most up-to-date version.
+2. **Compile & Test:** The code is compiled and unit tests are executed to verify functionality and correctness.
+3. **Security Scanning:** Trivy performs filesystem and Docker image scans, generating detailed security reports.
+4. **Code Quality Analysis:** SonarQube runs an analysis to maintain code quality and enforce coding standards.
+5. **Build & Tag Docker Image:** The application is packaged into a Docker image, which is then tagged for deployment.
+6. **Push Docker Image:** The Docker image is pushed to Docker Hub for further deployment.
+7. **Kubernetes Deployment:** The application is deployed to a Kubernetes cluster, ensuring scalability and reliability.
+8. **Deployment Verification:** The deployment is verified by checking the status of pods within the Kubernetes cluster.
+9. **Email Notification:** At the end of the pipeline, an email is sent out detailing the build’s success or failure, with attached security reports from Trivy.
 
-## Features
+#### **Learnings:**
+- **Automation Mastery:** I gained hands-on experience in automating the entire DevOps pipeline, which significantly reduced manual intervention and increased operational efficiency.
+- **Security First:** Implementing continuous security scanning taught me the importance of identifying and addressing vulnerabilities early in the development process.
+- **Scalable Deployments:** Deploying applications using Kubernetes provided valuable insights into managing scalable and resilient deployments that can handle traffic fluctuations.
 
-- Full-Stack Application
-- UI components created with Thymeleaf and styled with Twitter Bootstrap
-- Authentication and authorization using Spring Security
-  - Authentication by allowing the users to authenticate with a username and password
-  - Authorization by granting different permissions based on the roles (non-members, users, and managers)
-- Different roles (non-members, users, and managers) with varying levels of permissions
-  - Non-members only can see the boardgame lists and reviews
-  - Users can add board games and write reviews
-  - Managers can edit and delete the reviews
-- Deployed the application on AWS EC2
-- JUnit test framework for unit testing
-- Spring MVC best practices to segregate views, controllers, and database packages
-- JDBC for database connectivity and interaction
-- CRUD (Create, Read, Update, Delete) operations for managing data in the database
-- Schema.sql file to customize the schema and input initial data
-- Thymeleaf Fragments to reduce redundancy of repeating HTML elements (head, footer, navigation)
+#### **Future Plans:**
+I am excited to evolve this project by implementing the following enhancements:
 
-## How to Run
+- **Monitoring & Observability:** Integrating **SigNoz** for comprehensive monitoring and observability, which will allow proactive identification of potential issues before they impact users.
+- **NLP for Automated Reporting:** Utilizing **NLP** to automatically summarize reports from Trivy and SonarQube. These summaries will be sent to teams via Slack, improving communication and operational efficiency.
+- **Infrastructure as Code:** Introducing **Terraform** to define and manage infrastructure as code, which will enable consistent and repeatable environments across different stages of deployment.
+- **Ansible Integration:** Leveraging **Ansible** for automated tool installation and configuration management across servers, simplifying the setup and reducing potential errors.
+- **Blue-Green Deployment Strategy:** Implementing a multi-branch build strategy that follows the **blue-green deployment** model, which will minimize downtime and reduce the risk associated with deployments. 
 
-1. Clone the repository
-2. Open the project in your IDE of choice
-3. Run the application
-4. To use initial user data, use the following credentials.
-  - username: bugs    |     password: bunny (user role)
-  - username: daffy   |     password: duck  (manager role)
-5. You can also sign-up as a new user and customize your role to play with the application! 😊
+This project and its planned enhancements demonstrate my deep understanding of DevOps practices, my commitment to continuous improvement, and my readiness to contribute to future projects that require robust, scalable, and secure CI/CD pipelines.
